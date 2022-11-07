@@ -1,0 +1,17 @@
+# This file defines charm config options, and populates the Configure tab on Charmhub.
+# If your charm does not require configuration options, delete this file entirely.
+#
+# See https://juju.is/docs/config for guidance.
+
+options:
+  dirlisting:
+    description: |
+      Enables dirlisting
+    default: false
+    type: boolean
+  external_hostname:
+    description: |
+      Hostname to create ingress for
+    default: example.com
+    type: string
+

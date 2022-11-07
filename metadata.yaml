@@ -1,0 +1,43 @@
+# This file populates the Overview on Charmhub.
+# See https://juju.is/docs/sdk/metadata-reference for a checklist and guidance.
+
+# The charm package name, no spaces (required)
+# See https://juju.is/docs/sdk/naming#heading--naming-charms for guidance.
+name: h2o-http-k8s
+display-name: h2o http server
+summary: A very short one-line summary of the charm.
+
+description: |
+  A single sentence that says what the charm is, concisely and memorably.
+
+  A paragraph of one to three short sentences, that describe what the charm does.
+
+  A third paragraph that explains what need the charm meets.
+
+  Finally, a paragraph that describes whom the charm is useful for.
+
+containers:
+  h2o-http:
+    resource: h2o-http-image
+    mounts:
+      - storage: webroot
+        location: /var/www/html
+
+resources:
+  h2o-http-image:
+    type: oci-image
+    description: OCI image for h2o-http
+    upstream-source: lkwg82/h2o-http2-server
+
+storage:
+  webroot:
+    type: filesystem
+    location: /srv
+
+requires:
+  ingress:
+    interface: ingress
+    optional: true
+
+assumes:
+    - k8s-api
